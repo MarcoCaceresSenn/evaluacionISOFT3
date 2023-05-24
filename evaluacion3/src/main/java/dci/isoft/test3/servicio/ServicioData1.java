@@ -8,22 +8,11 @@ import dci.isoft.test3.modelo.Usuario;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
-import java.io.IOException;
-import java.sql.Date;
-import java.text.DateFormat;
-import java.text.Format;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
-import java.util.Calendar;
+
 import java.util.List;
-
-import javax.print.DocFlavor.STRING;
-
-import org.apache.commons.collections.functors.TruePredicate;
-import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -103,8 +92,6 @@ public class ServicioData1 {
 
     }
 
-
-
     public List<Usuario> todosInactivos(ArrayList<Usuario> usuarios){
 
         List<Usuario> usuariosInactivos=new ArrayList<>();
@@ -154,6 +141,34 @@ public class ServicioData1 {
         }
   
         return sigoAInactivos;
+    }
+
+
+
+        
+    public List<Usuario> filtroPorMayoSeguidosParaInactivos(List<Usuario> usuarios){
+        String[] seguidoresMaximos={};
+        List<Usuario> usuariosPopulares = new ArrayList<>();
+
+      for (Usuario usuario : usuarios) {
+        if(seguidoresMaximos.length < usuario.getSiguiendo().length){
+            seguidoresMaximos = usuario.getSiguiendo();
+        }
+      }
+
+      for (Usuario usuarioPopular : usuarios) {
+        if(usuarioPopular.getSiguiendo().length == seguidoresMaximos.length){
+            usuariosPopulares.add(usuarioPopular);
+        }
+      }
+    System.out.println(usuariosPopulares.size());
+    return usuariosPopulares;
+
+    }
+
+        public List<Usuario> inactivoMasSeguidores(List<Usuario> inactivo){
+            return  filtroPorMayoSeguidosParaInactivos(inactivo);
+
     }
 
 

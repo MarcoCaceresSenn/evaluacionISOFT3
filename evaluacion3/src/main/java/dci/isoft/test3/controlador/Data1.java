@@ -41,6 +41,14 @@ public class Data1 {
        return  servicio.inactivosSeguidosMitad(usuarios,tiempo());
     }
 
+    @GetMapping("/inactivosMásSeguidos")
+    public List<Usuario> inactivosMasSeguidos(){
+       return  servicio.inactivoMasSeguidores(tiempo());
+    }
+
+
+
+    
 
 
 }
