@@ -21,17 +21,17 @@ public class Data1 {
     @Autowired
     ServicioData1 servicio;
 
-    @GetMapping("/listar")
-    public void listar(){
-      servicio.listar(usuarios);
+    @GetMapping("/generar")
+    public void generar(){
+      servicio.generar(usuarios);
     }
 
     @GetMapping("/seguidoMaximo")
     public List<Usuario> maximoSeguidor(){
-       return  servicio.filtroPorMayoSeguidores(usuarios);
+       return  servicio.filtroPorMayoSeguidos(usuarios);
     }
 
-    @GetMapping("/tiempo")
+    @GetMapping("/inactivos")
     public List<Usuario> tiempo(){
        return  servicio.todosInactivos(usuarios);
     }
