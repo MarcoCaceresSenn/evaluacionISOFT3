@@ -31,10 +31,12 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "develop",
-    "last_opened_file_path": "C:/Users/lilsa/OneDrive/Escritorio/test3/evaluacion3",
+    "git-widget-placeholder": "feature/desafio2",
+    "last_opened_file_path": "C:/Users/lilsa/OneDrive/Documentos/GitHub/evaluacionISOFT3/evaluacion3",
+    "nodejs_package_manager_path": "npm",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -47,6 +49,7 @@
       <option name="presentableId" value="Default" />
       <updated>1684868120496</updated>
       <workItem from="1684868123835" duration="29000" />
+      <workItem from="1684889134562" duration="148000" />
     </task>
     <servers />
   </component>
