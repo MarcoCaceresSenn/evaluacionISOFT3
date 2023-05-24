@@ -15,8 +15,12 @@ import java.text.Format;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
+
+import javax.print.DocFlavor.STRING;
 
 import org.apache.commons.collections.functors.TruePredicate;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -26,6 +30,7 @@ import org.springframework.stereotype.Service;
 public class ServicioData1 {
     
     public void listar(ArrayList<Usuario> usuarios){
+        DateTimeFormatter formato = DateTimeFormatter.ofPattern("dd/MM/yyyy");
         File archivo = null;
         FileReader fr = null;
         BufferedReader br = null;
@@ -49,17 +54,17 @@ public class ServicioData1 {
 
             while ((linea = br.readLine()) != null) {
                 if(primeraLinea==true){
+
                     primeraLinea=false;
                     continue;
                 }
                 datos = linea.split(";");        
                 datosPunto = datos[3].split(",");
 
-                SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
-                 
+               
+                LocalDate fecha = LocalDate.parse(datos[2],formato);  
 
-
-                Usuario usuario = new Usuario(Integer.parseInt(datos[0]), datos[1],formato.parse(datos[2]), datosPunto);
+                Usuario usuario = new Usuario(Integer.parseInt(datos[0]), datos[1],fecha, datosPunto);
                 usuarios.add(usuario);              
             
             }
@@ -100,22 +105,57 @@ public class ServicioData1 {
 
 
 
-    public List<Usuario> inactivos(ArrayList<Usuario> usuarios){
+    public List<Usuario> todosInactivos(ArrayList<Usuario> usuarios){
+
+        List<Usuario> usuariosInactivos=new ArrayList<>();
         
         for (Usuario usuario : usuarios) {
-
-         
-        System.out.println(usuario.getUltimaConexion().getYear());
+            LocalDate fechaReferencia = LocalDate.of(2023,5,22);
             
+            if(usuario.getUltimaConexion().isBefore(fechaReferencia.minusYears(4))){
+                usuariosInactivos.add(usuario);
+            }
             
         }
 
-
-
-
-
-        return usuarios;
+        return usuariosInactivos;
     }
+
+
+    public List<Usuario> inactivosSeguidosMitad(ArrayList<Usuario> usuarios, List<Usuario> usuariosInactivos){
+
+        List<Usuario> sigoAInactivos=new ArrayList<>();
+        
+        List<Integer> usuariosInactivosId=new ArrayList<>();
+
+        for (Usuario usuarioId : usuariosInactivos ) {         
+           usuariosInactivosId.add(usuarioId.getId());     
+         }
+        for (Usuario usuario : usuarios) {    
+            int inactivos=0;
+            String[] sigoString= usuario.getSiguiendo();
+            int [] sigoInt=new int[sigoString.length];
+         
+            for (int index = 0; index < sigoString.length; index++) {
+                sigoInt[index] = Integer.parseInt(sigoString[index]);
+            }
+
+
+            for (Integer estaInactivo : sigoInt) {
+                  if(usuariosInactivosId.contains(estaInactivo)){
+                    inactivos++;
+                  }
+            }
+
+            if(inactivos > (sigoInt.length/2) ){
+                sigoAInactivos.add(usuario);
+
+            }    
+        }
+  
+        return sigoAInactivos;
+    }
+
 
 
 

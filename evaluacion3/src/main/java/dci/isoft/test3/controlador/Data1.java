@@ -33,7 +33,12 @@ public class Data1 {
 
     @GetMapping("/tiempo")
     public List<Usuario> tiempo(){
-       return  servicio.inactivos(usuarios);
+       return  servicio.todosInactivos(usuarios);
+    }
+
+    @GetMapping("/inactivosSeguidos")
+    public List<Usuario> inactivosSeguidos(){
+       return  servicio.inactivosSeguidosMitad(usuarios,tiempo());
     }
 
 

@@ -1,8 +1,8 @@
 package dci.isoft.test3.modelo;
 
-import java.sql.Date;
 
-import javax.print.DocFlavor.STRING;
+import java.time.LocalDate;
+
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -20,7 +20,7 @@ public class Usuario {
 
     private String correo;
 
-    private  java.util.Date ultimaConexion;
+    private  LocalDate ultimaConexion;
 
     private String[] siguiendo;
     
