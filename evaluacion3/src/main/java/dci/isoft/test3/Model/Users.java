@@ -5,6 +5,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 
 @Getter
@@ -12,8 +13,8 @@ import java.util.ArrayList;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Users {
-    private long id;
+    private int id;
     private String correo;
-    private String ultimaConexion;
-    private ArrayList<Users> seguidos;
+    private LocalDate ultimaConexion;
+    private String[] seguidos;
 }
