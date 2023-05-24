@@ -1,5 +1,8 @@
 package dci.isoft.test3.Services;
 
+import dci.isoft.test3.Model.Users;
+import dci.isoft.test3.modelo.Usuario;
+import dci.isoft.test3.servicio.ServicioData1;
 import org.springframework.stereotype.Service;
 import dci.isoft.test3.Model.Users;
 
@@ -15,6 +18,8 @@ import java.util.List;
 @Service
 public class CSVService {
     ArrayList<Users> users = new ArrayList<>();
+    ServicioData1 servicioData1 = new ServicioData1();
+
     public ArrayList<Users> listar(ArrayList<Users> usuarios){
         File archivo = null;
         FileReader fr = null;
@@ -86,6 +91,50 @@ public class CSVService {
         return ultimosDiez;
     }
 
+    /*usuario con más seguidores o usuarios*/
+    public List<Users> usuarioConMasSeguidores(ArrayList<Users> usuarios){
+        ArrayList<Users> user = listar(usuarios);
+        Users userAux = null;
+        List<Users> usuarioMasSeguido = new ArrayList<>();
+        int max = 0;
+        for (Users user1 : user) {
+            if (user1.getSeguidos().length > max) {
+                max = user1.getSeguidos().length;
+                usuarioMasSeguido.add(userAux);
+            }
+        }
+        return usuarioMasSeguido;
+    }
+
+    /*public List<Usuario> usuarioInactivoConMasSeguidores(ArrayList<Usuario> users){
+        List<Usuario> inactivos = servicioData1.todosInactivos(users); //inactivos
+        ArrayList<Usuario> inactivoList = new ArrayList<>(inactivos);
+        List<Usuario> mayorSeguidoInactivo = servicioData1.filtroPorMayoSeguidores(inactivoList);
+        return mayorSeguidoInactivo;
+    }
+
+     */
+
+    /*copia del otro servicio parseado a diferente model*/
+    public List<Users> filtroPorMayoSeguidores(ArrayList<Users> usuarios){
+        String[] seguidoresMaximos={};
+        List<Users> usuariosPopulares = new ArrayList<>();
+
+        for (Users usuario : usuarios) {
+            if(seguidoresMaximos.length < usuario.getSeguidos().length){
+                seguidoresMaximos = usuario.getSeguidos();
+            }
+        }
+
+        for (Users usuarioPopular : usuarios) {
+            if(usuarioPopular.getSeguidos().length == seguidoresMaximos.length){
+                usuariosPopulares.add(usuarioPopular);
+            }
+        }
+        System.out.println(usuariosPopulares.size());
+        return usuariosPopulares;
+
+    }
 
 
 }
