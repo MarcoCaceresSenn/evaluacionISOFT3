@@ -29,7 +29,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class ServicioData1 {
     
-    public void listar(ArrayList<Usuario> usuarios){
+    public void generar(ArrayList<Usuario> usuarios){
         DateTimeFormatter formato = DateTimeFormatter.ofPattern("dd/MM/yyyy");
         File archivo = null;
         FileReader fr = null;
@@ -83,7 +83,7 @@ public class ServicioData1 {
 
     }
 
-    public List<Usuario> filtroPorMayoSeguidores(ArrayList<Usuario> usuarios){
+    public List<Usuario> filtroPorMayoSeguidos(ArrayList<Usuario> usuarios){
         String[] seguidoresMaximos={};
         List<Usuario> usuariosPopulares = new ArrayList<>();
 
