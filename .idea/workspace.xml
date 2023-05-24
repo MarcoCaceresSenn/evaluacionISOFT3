@@ -34,7 +34,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "feature/desafio2",
+    "git-widget-placeholder": "pipeline",
     "last_opened_file_path": "C:/Users/lilsa/OneDrive/Documentos/GitHub/evaluacionISOFT3/evaluacion3",
     "nodejs_package_manager_path": "npm",
     "vue.rearranger.settings.migration": "true"
@@ -50,6 +50,7 @@
       <updated>1684868120496</updated>
       <workItem from="1684868123835" duration="29000" />
       <workItem from="1684889134562" duration="148000" />
+      <workItem from="1684900114653" duration="23000" />
     </task>
     <servers />
   </component>
