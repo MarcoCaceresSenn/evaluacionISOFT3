@@ -31,6 +31,11 @@ public class Data1 {
        return  servicio.filtroPorMayoSeguidores(usuarios);
     }
 
+    @GetMapping("/tiempo")
+    public List<Usuario> tiempo(){
+       return  servicio.inactivos(usuarios);
+    }
+
 
 
 }

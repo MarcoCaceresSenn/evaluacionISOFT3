@@ -1,4 +1,4 @@
-package dci.isoft.test3.modelos;
+package dci.isoft.test3.modelo;
 
 import java.sql.Date;
 

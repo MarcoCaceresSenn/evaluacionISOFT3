@@ -3,7 +3,7 @@ package dci.isoft.test3.servicio;
 import com.opencsv.CSVReader;
 import com.opencsv.exceptions.CsvException;
 
-import dci.isoft.test3.modelos.Usuario;
+import dci.isoft.test3.modelo.Usuario;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -104,6 +104,8 @@ public class ServicioData1 {
         
         for (Usuario usuario : usuarios) {
 
+         
+        System.out.println(usuario.getUltimaConexion().getYear());
             
             
         }
