@@ -14,4 +14,4 @@ EXPOSE 3001
 
 COPY --from=builder /build/target/ /app/
 
-CMD ["java", "-jar", "/app/evaluaicion3-0.0.1-SNAPSHOT.jar"]
+CMD ["java", "-jar", "/app/evaluacion3-0.0.1-SNAPSHOT.jar"]
